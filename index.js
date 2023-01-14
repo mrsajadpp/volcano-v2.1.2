@@ -19,10 +19,11 @@ bot.on('ready', () => {
 })
 
 bot.on('messageCreate', msg => {
+  try {
   if (msg.author.id !== bot.user.id) {
     msg.content = msg.content.toLowerCase();
     let args = msg.content.split(" ");
-    if(args[0] !== ':add') {
+    if(args[0] !== '!add') {
       for (let i = 0; i < badwords.length; i++) {
         if (args.includes(badwords[i])) {
           msg.delete()
@@ -37,6 +38,9 @@ bot.on('messageCreate', msg => {
         msg.delete()
       }
     }
+  }
+  } catch(err) {
+    console.error(err)
   }
 })
 
