@@ -25,6 +25,7 @@ bot.on('messageCreate', msg => {
     for (let i = 0; i < badwords.length; i++) {
       if (args.includes(badwords[i])) {
         msg.delete()
+        break;
       }
     }
     if(msg.content.startsWith(':add')) {
