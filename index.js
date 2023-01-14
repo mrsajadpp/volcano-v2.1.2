@@ -21,18 +21,17 @@ bot.on('ready', () => {
 bot.on('messageCreate', msg => {
   if (msg.author.id !== bot.user.id) {
     msg.content = msg.content.toLowerCase();
-    if(msg.content.startsWith(':add')) {
-      let cnt = msg.content.split(" ");
-      if(cnt[1]) {
-        badwords.push(cnt[1])
-        msg.delete()
-      } else {
-        msg.delete()
-      }
-    }
     let args = msg.content.split(" ");
     for (let i = 0; i < badwords.length; i++) {
       if (args.includes(badwords[i])) {
+        msg.delete()
+      }
+    }
+    if(msg.content.startsWith(':add')) {
+      if(args[1]) {
+        badwords.push(args[1])
+        msg.delete()
+      } else {
         msg.delete()
       }
     }
