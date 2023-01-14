@@ -3,6 +3,8 @@ const badwords = require('badwords/array');
 const app = require('express')();
 const bot = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds, Discord.GatewayIntentBits.GuildMessages, Discord.GatewayIntentBits.MessageContent, Discord.GatewayIntentBits.GuildMembers] })
 
+badwords.push('wtf')
+
 app.listen(3000)
 app.get('/', (req, res) => {
   res.send('hi')
