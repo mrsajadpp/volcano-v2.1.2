@@ -22,13 +22,14 @@ bot.on('messageCreate', msg => {
   if (msg.author.id !== bot.user.id) {
     msg.content = msg.content.toLowerCase();
     let args = msg.content.split(" ");
-    for (let i = 0; i < badwords.length; i++) {
-      if (args.includes(badwords[i])) {
-        msg.delete()
-        break;
+    if(args[0] !== ':add') {
+      for (let i = 0; i < badwords.length; i++) {
+        if (args.includes(badwords[i])) {
+          msg.delete()
+          break;
+        }
       }
-    }
-    if(msg.content.startsWith(':add')) {
+    } else {
       if(args[1]) {
         badwords.push(args[1])
         msg.delete()
